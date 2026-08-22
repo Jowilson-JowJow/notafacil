@@ -1,33 +1,21 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CadastroScreen from './screens/CadastroScreen';
+import ListagemScreen from './screens/ListagemScreen';
+import type { RootStackParamList } from './types';
 
-export default function HomeScreen() {
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function Index() {
   return (
-    
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Listagem" component={ListagemScreen} />
+          <Stack.Screen name="Cadastro" component={CadastroScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
